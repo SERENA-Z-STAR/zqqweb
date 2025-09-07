@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频 - 校园论坛</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50 transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- 返回按钮和Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="mr-4 text-gray-600 hover:text-primary transition-colors md:hidden">
+                        <i class="fa fa-arrow-left text-lg"></i>
+                    </a>
+                    <a href="index.html" class="flex items-center">
+                        <i class="fa fa-graduation-cap text-primary text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">校园论坛</span>
+                    </a>
+                </div>
+                
+                <!-- 导航链接 -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a
+                      href="index.html"
+                      class="px-1 py-2 font-medium text-gray-600 hover:text-primary transition-colors"
+                      >首页</a
+                    >
+                    <!-- 版块二级菜单 -->
+                    <div class="relative group">
+                      <button class="px-1 py-2 font-medium text-gray-600 hover:text-primary transition-colors flex items-center">
+                        版块 <i class="fa fa-chevron-down ml-1 text-xs"></i>
+                      </button>
+                      <div class="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <div class="py-2">
+                          <a href="#study" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">学习交流</a>
+                          <a href="#club" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">社团活动</a>
+                          <a href="#campus" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">校园生活</a>
+                          <a href="#entertainment" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">娱乐休闲</a>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- 热门二级菜单 -->
+                    <div class="relative group">
+                      <button class="px-1 py-2 font-medium text-gray-600 hover:text-primary transition-colors flex items-center">
+                        热门 <i class="fa fa-chevron-down ml-1 text-xs"></i>
+                      </button>
+                      <div class="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <div class="py-2">
+                          <a href="#hot-posts" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">热门帖子</a>
+                          <a href="#hot-topics" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">热门话题</a>
+                          <a href="#hot-users" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">活跃用户</a>
+                          <a href="#hot-rewards" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">热门悬赏</a>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- 视频二级菜单 -->
+                    <div class="relative group">
+                      <button class="px-1 py-2 font-medium text-primary transition-colors flex items-center">
+                        视频 <i class="fa fa-chevron-down ml-1 text-xs"></i>
+                      </button>
+                      <div class="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                        <div class="py-2">
+                          <a href="#campus-news" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">校园新闻</a>
+                          <a href="#activity-record" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">活动记录</a>
+                          <a href="#talent-show" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">才艺展示</a>
+                          <a href="#study-share" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary transition-colors">学习分享</a>
+                        </div>
+                      </div>
+                    </div>
+                </nav>
+                
+                <!-- 用户区域 -->
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-600 hover:text-primary transition-colors">
+                        <i class="fa fa-search text-lg"></i>
+                    </button>
+                    <button class="hidden md:block bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full font-medium transition-colors">
+                        发布帖子
+                    </button>
+                    <a href="#user" class="text-gray-600 hover:text-primary transition-colors">
+                        <img src="https://picsum.photos/id/64/100/100" alt="用户头像" class="w-8 h-8 rounded-full object-cover">
+                    </a>
+                    <!-- 移动端菜单按钮 -->
+                    <button
+                      id="mobile-menu-btn"
+                      class="md:hidden text-gray-600 hover:text-primary transition-colors">
+                      <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 移动端菜单 -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden bg-white border-t border-gray-100 py-4">
+          <div class="container mx-auto px-4 space-y-4">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="搜索帖子、话题或用户..."
+                class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" />
+              <i
+                class="fa fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            </div>
+            <nav class="flex flex-col space-y-1">
+              <a
+                href="index.html"
+                class="px-3 py-2 font-medium rounded-lg hover:bg-primary/5 transition-colors"
+                >首页</a
+              >
+              
+              <!-- 移动端版块二级菜单 -->
+              <div class="space-y-1">
+                <button id="mobile-forums-btn" class="w-full text-left px-3 py-2 font-medium text-gray-600 hover:bg-primary/5 rounded-lg transition-colors flex justify-between items-center">
+                  版块 <i class="fa fa-chevron-down ml-1 text-xs transition-transform"></i>
+                </button>
+                <div id="mobile-forums-submenu" class="hidden pl-6 space-y-1">
+                  <a href="#study" class="block px-3 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors">学习交流</a>
+                  <a href="#club" class="block px-3 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors">社团活动</a>
+                  <a href="#campus" class="block px-3 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors">校园生活</a>
+                  <a href="#entertainment" class="block px-3 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors">娱乐休闲</a>
+                </div>
+              </div>
+              
+              <!-- 移动端热门二级菜单 -->
+              <div class="space-y-1">
+                <button id="mobile-trending-btn" class="w-full text-left px-3 py-2 font-medium text-gray-600 hover:bg-primary/5 rounded-lg transition-colors flex justify-between items-center">
+                  热门 <i class="fa fa-chevron-down ml-1 text-xs transition-transform"></i>
+                </button>
+                <div id="mobile-trending-submenu" class="hidden pl-6 space-y-1">
+                  <a href="#hot-posts" class="block px-3 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors">热门帖子</a>
+                  <a href="#hot-topics" class="block px-3 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors">热门话题</a>
+                  <a href="#hot-users" class="block px-3 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors">活跃用户</a>
+                  <a href="#hot-rewards" class="block px-3 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors">热门悬赏</a>
+                </div>
+              </div>
+              
+              <!-- 移动端视频二级菜单 -->
+              <div class="space-y-1">
+                <button id="mobile-videos-btn" class="w-full text-left px-3 py-2 font-medium text-primary rounded-lg bg-primary/5 flex justify-between items-center">
+                  视频 <i class="fa fa-chevron-down ml-1 text-xs transition-transform"></i>
+                </button>
+                <div id="mobile-videos-submenu" class="pl-6 space-y-1">
+                  <a href="#campus-news" class="block px-3 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors">校园新闻</a>
+                  <a href="#activity-record" class="block px-3 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors">活动记录</a>
+                  <a href="#talent-show" class="block px-3 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors">才艺展示</a>
+                  <a href="#study-share" class="block px-3 py-2 text-sm text-gray-700 hover:bg-primary/5 hover:text-primary rounded-lg transition-colors">学习分享</a>
+                </div>
+              </div>
+            </nav>
+            <button class="w-full bg-primary hover:bg-primary/90 text-white py-2 rounded-full font-medium transition-colors">
+                发布帖子
+            </button>
+          </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 pt-24 pb-16">
+        <!-- 视频列表 -->
+        <section class="mb-12">
+            <div class="flex items-center mb-8">
+                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors mr-4">
+                    <i class="fa fa-arrow-left text-xl"></i>
+                </a>
+                <h1 class="text-3xl font-bold">精彩视频</h1>
+            </div>
+            
+            <div class="flex overflow-x-auto pb-4 mb-8 hide-scrollbar space-x-4">
+                <button class="px-5 py-2 bg-primary text-white rounded-full font-medium whitespace-nowrap">全部视频</button>
+                <button class="px-5 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full font-medium whitespace-nowrap transition-colors">校园新闻</button>
+                <button class="px-5 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full font-medium whitespace-nowrap transition-colors">活动记录</button>
+                <button class="px-5 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full font-medium whitespace-nowrap transition-colors">才艺展示</button>
+                <button class="px-5 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full font-medium whitespace-nowrap transition-colors">学习分享</button>
+                <button class="px-5 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full font-medium whitespace-nowrap transition-colors">体育赛事</button>
+                <button class="px-5 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full font-medium whitespace-nowrap transition-colors">美食分享</button>
+                <button class="px-5 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full font-medium whitespace-nowrap transition-colors">旅行日记</button>
+            </div>
+
+            <!-- 视频网格 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- 视频1 -->
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative">
+                        <img
+                            src="https://picsum.photos/id/65/600/400"
+                            alt="视频封面"
+                            class="w-full h-48 object-cover" />
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button
+                                class="w-14 h-14 rounded-full bg-white/30 backdrop-blur-sm hover:bg-white/50 flex items-center justify-center transition-all">
+                                <i class="fa fa-play text-white text-lg"></i>
+                            </button>
+                        </div>
+                        <div
+                            class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
+                            02:45
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold mb-2 line-clamp-2 hover:text-primary transition-colors">
+                            <a href="#">2023校花评选候选人精彩瞬间</a>
+                        </h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <img
+                                src="https://picsum.photos/id/64/100/100"
+                                alt="用户头像"
+                                class="w-5 h-5 rounded-full object-cover mr-1" />
+                            <span>校园摄影师</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-xs">
+                            <span class="mr-3"><i class="fa fa-eye mr-1"></i> 12.5k</span>
+                            <span><i class="fa fa-thumbs-o-up mr-1"></i> 892</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 视频2 -->
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative">
+                        <img
+                            src="https://picsum.photos/id/250/600/400"
+                            alt="视频封面"
+                            class="w-full h-48 object-cover" />
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button
+                                class="w-14 h-14 rounded-full bg-white/30 backdrop-blur-sm hover:bg-white/50 flex items-center justify-center transition-all">
+                                <i class="fa fa-play text-white text-lg"></i>
+                            </button>
+                        </div>
+                        <div
+                            class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
+                            05:32
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold mb-2 line-clamp-2 hover:text-primary transition-colors">
+                            <a href="#">校园文化艺术节精彩回顾</a>
+                        </h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <img
+                                src="https://picsum.photos/id/129/100/100"
+                                alt="用户头像"
+                                class="w-5 h-5 rounded-full object-cover mr-1" />
+                            <span>校园活动家</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-xs">
+                            <span class="mr-3"><i class="fa fa-eye mr-1"></i> 8.3k</span>
+                            <span><i class="fa fa-thumbs-o-up mr-1"></i> 654</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 视频3 -->
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative">
+                        <img
+                            src="https://picsum.photos/id/48/600/400"
+                            alt="视频封面"
+                            class="w-full h-48 object-cover" />
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button
+                                class="w-14 h-14 rounded-full bg-white/30 backdrop-blur-sm hover:bg-white/50 flex items-center justify-center transition-all">
+                                <i class="fa fa-play text-white text-lg"></i>
+                            </button>
+                        </div>
+                        <div
+                            class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
+                            10:15
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold mb-2 line-clamp-2 hover:text-primary transition-colors">
+                            <a href="#">高数期末复习重点讲解</a>
+                        </h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <img
+                                src="https://picsum.photos/id/91/100/100"
+                                alt="用户头像"
+                                class="w-5 h-5 rounded-full object-cover mr-1" />
+                            <span>学霸笔记</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-xs">
+                            <span class="mr-3"><i class="fa fa-eye mr-1"></i> 23.7k</span>
+                            <span><i class="fa fa-thumbs-o-up mr-1"></i> 1.2k</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 视频4 -->
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative">
+                        <img
+                            src="https://picsum.photos/id/342/600/400"
+                            alt="视频封面"
+                            class="w-full h-48 object-cover" />
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button
+                                class="w-14 h-14 rounded-full bg-white/30 backdrop-blur-sm hover:bg-white/50 flex items-center justify-center transition-all">
+                                <i class="fa fa-play text-white text-lg"></i>
+                            </button>
+                        </div>
+                        <div
+                            class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
+                            03:48
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold mb-2 line-clamp-2 hover:text-primary transition-colors">
+                            <a href="#">校园歌手大赛决赛现场</a>
+                        </h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <img
+                                src="https://picsum.photos/id/54/100/100"
+                                alt="用户头像"
+                                class="w-5 h-5 rounded-full object-cover mr-1" />
+                            <span>音乐爱好者</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-xs">
+                            <span class="mr-3"><i class="fa fa-eye mr-1"></i> 15.9k</span>
+                            <span><i class="fa fa-thumbs-o-up mr-1"></i> 987</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 视频5 -->
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative">
+                        <img
+                            src="https://picsum.photos/id/177/600/400"
+                            alt="视频封面"
+                            class="w-full h-48 object-cover" />
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button
+                                class="w-14 h-14 rounded-full bg-white/30 backdrop-blur-sm hover:bg-white/50 flex items-center justify-center transition-all">
+                                <i class="fa fa-play text-white text-lg"></i>
+                            </button>
+                        </div>
+                        <div
+                            class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
+                            08:22
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold mb-2 line-clamp-2 hover:text-primary transition-colors">
+                            <a href="#">校园美食探店：食堂隐藏菜单</a>
+                        </h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <img
+                                src="https://picsum.photos/id/22/100/100"
+                                alt="用户头像"
+                                class="w-5 h-5 rounded-full object-cover mr-1" />
+                            <span>美食达人</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-xs">
+                            <span class="mr-3"><i class="fa fa-eye mr-1"></i> 18.4k</span>
+                            <span><i class="fa fa-thumbs-o-up mr-1"></i> 1.1k</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 视频6 -->
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative">
+                        <img
+                            src="https://picsum.photos/id/325/600/400"
+                            alt="视频封面"
+                            class="w-full h-48 object-cover" />
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button
+                                class="w-14 h-14 rounded-full bg-white/30 backdrop-blur-sm hover:bg-white/50 flex items-center justify-center transition-all">
+                                <i class="fa fa-play text-white text-lg"></i>
+                            </button>
+                        </div>
+                        <div
+                            class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
+                            06:10
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold mb-2 line-clamp-2 hover:text-primary transition-colors">
+                            <a href="#">校园运动会精彩集锦</a>
+                        </h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <img
+                                src="https://picsum.photos/id/76/100/100"
+                                alt="用户头像"
+                                class="w-5 h-5 rounded-full object-cover mr-1" />
+                            <span>体育委员</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-xs">
+                            <span class="mr-3"><i class="fa fa-eye mr-1"></i> 9.2k</span>
+                            <span><i class="fa fa-thumbs-o-up mr-1"></i> 753</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 视频7 -->
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative">
+                        <img
+                            src="https://picsum.photos/id/180/600/400"
+                            alt="视频封面"
+                            class="w-full h-48 object-cover" />
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button
+                                class="w-14 h-14 rounded-full bg-white/30 backdrop-blur-sm hover:bg-white/50 flex items-center justify-center transition-all">
+                                <i class="fa fa-play text-white text-lg"></i>
+                            </button>
+                        </div>
+                        <div
+                            class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
+                            12:35
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold mb-2 line-clamp-2 hover:text-primary transition-colors">
+                            <a href="#">英语四级考试冲刺技巧分享</a>
+                        </h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <img
+                                src="https://picsum.photos/id/91/100/100"
+                                alt="用户头像"
+                                class="w-5 h-5 rounded-full object-cover mr-1" />
+                            <span>学霸笔记</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-xs">
+                            <span class="mr-3"><i class="fa fa-eye mr-1"></i> 25.8k</span>
+                            <span><i class="fa fa-thumbs-o-up mr-1"></i> 1.5k</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 视频8 -->
+                <div class="bg-white rounded-xl overflow-hidden card-shadow hover-scale">
+                    <div class="relative">
+                        <img
+                            src="https://picsum.photos/id/239/600/400"
+                            alt="视频封面"
+                            class="w-full h-48 object-cover" />
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <button
+                                class="w-14 h-14 rounded-full bg-white/30 backdrop-blur-sm hover:bg-white/50 flex items-center justify-center transition-all">
+                                <i class="fa fa-play text-white text-lg"></i>
+                            </button>
+                        </div>
+                        <div
+                            class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
+                            04:55
+                        </div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold mb-2 line-clamp-2 hover:text-primary transition-colors">
+                            <a href="#">宿舍生活小技巧分享</a>
+                        </h3>
+                        <div class="flex items-center text-gray-500 text-sm mb-2">
+                            <img
+                                src="https://picsum.photos/id/33/100/100"
+                                alt="用户头像"
+                                class="w-5 h-5 rounded-full object-cover mr-1" />
+                            <span>生活小达人</span>
+                        </div>
+                        <div class="flex items-center text-gray-400 text-xs">
+                            <span class="mr-3"><i class="fa fa-eye mr-1"></i> 14.3k</span>
+                            <span><i class="fa fa-thumbs-o-up mr-1"></i> 876</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 加载更多按钮 -->
+            <div class="text-center mt-10">
+                <button
+                    class="px-8 py-3 bg-white border border-gray-200 rounded-full text-gray-700 hover:bg-gray-50 transition-colors font-medium">
+                    加载更多视频 <i class="fa fa-angle-down ml-1"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-50 border-t border-gray-100 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fa fa-graduation-cap text-primary text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">校园论坛</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        连接校园，分享生活，共同成长
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-wechat text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-qq text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition-colors">关于我们</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition-colors">联系我们</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition-colors">使用条款</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition-colors">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">帮助中心</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition-colors">常见问题</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition-colors">使用指南</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition-colors">意见反馈</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary transition-colors">举报中心</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">联系我们</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-map-marker mr-2"></i> 北京市海淀区中关村南大街5号
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-phone mr-2"></i> 010-12345678
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <i class="fa fa-envelope-o mr-2"></i> contact@campusforum.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-500">
+                <p>© 2023 校园论坛. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button
+        id="back-to-top"
+        class="fixed bottom-6 right-6 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-lg opacity-0 invisible transition-all z-40">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
